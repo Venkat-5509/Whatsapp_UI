@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calls.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <title>CALL</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="top">
+            <div class="topside">
+            <i class="fa-brands fa-whatsapp" id="size"></i>
+            <span class="app">WhatsApp</span></div>
+            <div class="side">
+            <a href="index.html"><i class="fa fa-bars" id="icon"></i></a>
+            <a href="index.html"><i class="fa fa-comment-dots" id="icon"></i></a>
+            <a href="calls.html"><i class="fa fa-phone" id="icon"></i></a>
+            <a href="status.html"><i class="fa fa-circle-notch" id="icon"></i></a>
+            <span class="line"></span>
+            <a href="meta.html"><i class="fa-brands fa-meta" id="icon" style="color: #0064e0;
+            text-shadow: 0 0 1px black, 0 0 1px black; "></i></a>
+            </div>
+            <div class="side1">
+            <a href="locked.html"><i class="fa fa-lock" id="icon1"></i></a>
+            <a href="starred.html"><i class="fa fa-star" id="icon1" ></i></a>
+            <a href="archived.html"><i class="fa fa-box-archive" id="icon1"></i></a>
+            <span class="line1"></span>
+            <a href="settings.html"><i class="fa fa-gear" id="icon1"></i></a>
+            <a href=""><i class="fa fa-circle-user" id="icon1"></i></a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="menu">
+                <div class="chat">
+                <p class="heading">Chats</p>
+                <div class="chaticon">
+                <a href=""><i class="fa fa-message" id="icon2"></i></a>
+                <a href=""><i class="fa-duotone fa-solid fa-filter" id="icon2"></i></a>
+                </div>
+                </div>
+                <div class="search-box">
+                <input type="search" id="searchInput" placeholder="Search calls " autocomplete="off" >
+                </div>
+              <div class="favorite">
+               <li>
+                <i class="fa fa-user-plus" id="favoriteicon"></i><h2>Add favorites</h2></li> <hr>
+              </div>
+                <div class="scroll">
+                <ul id="nameList">
+                    <a href="" style="text-decoration: none;"><li><img src="maxcircle20.jpg" alt="" class="circle-img"><h2>Max <span class="recent"><br><i class="fa fa-phone-slash" id="recenticon" style="color: red;"></i>&nbsp;&nbsp;Missed</span></h2><span class="calldate" style="margin-left: 145px;">10-11-2025</span></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="stevencircle18.jpeg" alt="" class="circle-img"><h2>Steven <span class="recent"><br><i class="fa fa-phone" id="recenticon" ></i>&nbsp;&nbsp;Incoming</span></h2><span class="calldate" style="margin-left: 130px;">08-11-2025</span></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="girlcircle8.jpeg" alt="" class="circle-img"> <h2>Jenny <span class="recent"><br><i class="fa fa-video-slash" id="recenticon" style="color: red"></i>&nbsp;&nbsp;Missed (2)</span></h2><span class="calldate" style="margin-left: 128px;">02-11-2025</span></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="nancycircle21.jpg" alt="" class="circle-img"><h2>Nancy <span class="recent"><br><i class="fa fa-phone" id="recenticon" ></i>&nbsp;&nbsp;Outgoing</span></h2><span class="calldate" style="margin-left: 135px;">29-10-2025</span></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="dustincircle19.jpg" alt="" class="circle-img"><h2>Dustin <span class="recent"><br><i class="fa fa-phone-slash" id="recenticon" style="color: red;"></i>&nbsp;&nbsp;Missed (4)</span></h2><span class="calldate" style="margin-left: 128px;">26-10-2025</span></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="willcircle22.jpeg" alt="" class="circle-img"><h2>Will <span class="recent"><br><i class="fa fa-phone" id="recenticon" ></i>&nbsp;&nbsp;Incoming (6)</span></h2><span class="calldate" style="margin-left: 118px;">24-10-2025</span></li></a>
+                </ul>
+                </div>
+                
+        </div>
+        <div class="menucard">
+        <div class="rightmenu">
+        
+        <i class="fa fa-video" id="callicon" style="color: rgb(12, 180, 12);"><span class="nn"></span></i>
+        <i class="fa fa-video" id="callicon" ></i>
+        <i class="fa fa-table-cells" id="callicon"></i>
+        <h3 class="callname">Start call &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New call link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call a number</h3>
+        </div>
+        </div>
+    </div> 
+    <script>
+    // Wait for DOM so script works wherever you place it
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('searchInput');
+      const items = Array.from(document.querySelectorAll('#nameList li'));
+
+      // Debug check
+      if (!input) console.error('searchInput not found. Check id="searchInput"');
+      if (!items.length) console.error('No list items found under #nameList. Check id="nameList" and li structure.');
+
+      // Use 'input' for real-time typing (works for paste too)
+      input.addEventListener('input', () => {
+        const raw = input.value || '';
+        const q = raw.trim().toLowerCase();
+        console.log('search value:', JSON.stringify(raw), '-> normalized:', q); // debug log
+
+        // If empty, show all
+        if (!q) {
+          items.forEach(li => li.classList.remove('hide'));
+          return;
+        }
+
+        items.forEach(li => {
+          // find the name inside h2 (change selector if you used a different tag/class)
+          const h2 = li.querySelector('h2');
+          const name = h2 ? h2.textContent.trim().toLowerCase() : '';
+          const matches = name.startsWith(q); // only starting-letter match
+          li.classList.toggle('hide', !matches);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

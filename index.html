@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
+    <title>WhatsApp</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="top">
+            <div class="topside">
+            <i class="fa-brands fa-whatsapp" id="size"></i>
+            <span class="app">WhatsApp</span></div>
+            <div class="side">
+            <a href="index.html"><i class="fa fa-bars" id="icon"></i></a>
+            <a href="index.html"><i class="fa fa-comment-dots" id="icon"></i></a>
+            <a href="calls.html"><i class="fa fa-phone" id="icon"></i></a>
+            <a href="status.html"><i class="fa fa-circle-notch" id="icon"></i></a>
+            <span class="line"></span>
+            <a href="meta.html"><i class="fa-brands fa-meta" id="icon" style="color: #0064e0;
+            text-shadow: 0 0 1px black, 0 0 1px black; "></i></a>
+            </div>
+            <div class="side1">
+            <a href="locked.html"><i class="fa fa-lock" id="icon1"></i></a>
+            <a href="starred.html"><i class="fa fa-star" id="icon1" ></i></a>
+            <a href="archived.html"><i class="fa fa-box-archive" id="icon1"></i></a>
+            <span class="line1"></span>
+            <a href="settings.html"><i class="fa fa-gear" id="icon1"></i></a>
+            <a href=""><i class="fa fa-circle-user" id="icon1"></i></a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="menu">
+                <div class="chat">
+                <p class="heading">Chats</p>
+                <div class="chaticon">
+                <a href=""><i class="fa fa-message" id="icon2"></i></a>
+                <a href=""><i class="fa-duotone fa-solid fa-filter" id="icon2"></i></a>
+                </div>
+                </div>
+                <div class="search-box">
+                <input type="search" id="searchInput" placeholder="Search or start new chat" autocomplete="off" >
+                </div>
+                <div class="scroll">
+                <ul id="nameList">
+                    <a href="max.html" style="text-decoration: none;"><li><img src="maxcircle20.jpg" alt="" class="circle-img"><h2>Max</h2></li></a>
+                    <a href="michael.html" style="text-decoration: none;"><li><img src="circle2.jpg" alt="" class="circle-img"><h2>Michael</h2></li></a>
+                    <a href="john.html" style="text-decoration: none;"><li><img src="circle3.jpeg" alt="" class="circle-img"><h2>John</h2></li></a>
+                    <a href="meta.html" style="text-decoration: none;"><li><img src="metalogo1.PNG" alt="" class="circle-img"><h2>Meta AI</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="circle6.webp" alt="" class="circle-img"><h2>Alex</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="circle9.webp" alt="" class="circle-img"><h2>Anthony</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="stevencircle18.jpeg" alt="" class="circle-img"><h2>Steven</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="girlcircle8.jpeg" alt="" class="circle-img"> <h2>Jenny</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="nancycircle21.jpg" alt="" class="circle-img"><h2>Nancy</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="familycircle23.jpeg" alt="" class="circle-img"><h2>Family group</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="circle1.jpg" alt="" class="circle-img"><h2>Lucas</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="dustincircle19.jpg" alt="" class="circle-img"><h2>Dustin</h2></li></a>
+                    <a href="" style="text-decoration: none;"><li><img src="willcircle22.jpeg" alt="" class="circle-img"><h2>Will</h2></li></a>
+                </ul>
+                </div>
+                
+        </div>
+        <div class="menucard">
+          <div class="rightmenu">
+            <img src="whatsapp_logo2.JPG" alt="" class="whatsapp_logo">
+            <p class="whatsappheading">WhatsApp for Windows</p>
+            <p class="whatsapp_para">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send and receive messages without keeping your phone online. <br> 
+              Use WhatsApp on up to 4 linked devices and 1 phone at the same time.</p>
+            <p class="whatsapp_footer"><i class="fa fa-lock" id="lock"></i>&nbsp;&nbsp;End-to-end encrypted</p>
+          </div>
+        </div>
+    </div> 
+    <script>
+    // Wait for DOM so script works wherever you place it
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('searchInput');
+      const items = Array.from(document.querySelectorAll('#nameList li'));
+
+      // Debug check
+      if (!input) console.error('searchInput not found. Check id="searchInput"');
+      if (!items.length) console.error('No list items found under #nameList. Check id="nameList" and li structure.');
+
+      // Use 'input' for real-time typing (works for paste too)
+      input.addEventListener('input', () => {
+        const raw = input.value || '';
+        const q = raw.trim().toLowerCase();
+        console.log('search value:', JSON.stringify(raw), '-> normalized:', q); // debug log
+
+        // If empty, show all
+        if (!q) {
+          items.forEach(li => li.classList.remove('hide'));
+          return;
+        }
+
+        items.forEach(li => {
+          // find the name inside h2 (change selector if you used a different tag/class)
+          const h2 = li.querySelector('h2');
+          const name = h2 ? h2.textContent.trim().toLowerCase() : '';
+          const matches = name.startsWith(q); // only starting-letter match
+          li.classList.toggle('hide', !matches);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
